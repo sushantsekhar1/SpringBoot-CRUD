@@ -28,6 +28,13 @@ public class EventController {
         return "redirect:/participants";
     }
 
+    
+    @PostMapping("/delete/{id}")
+    public String deleteParticipant(@PathVariable Long id) {
+    	eventRepo.deleteById(id);
+        return "redirect:/participants";
+    }
+    
     // Admin: View all registered participants
     @GetMapping("/participants")
     public String viewParticipants(Model model) {
