@@ -12,6 +12,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Event Name</th>
+            <th>Action</th>
         </tr>
         <c:forEach var="participant" items="${participants}">
             <tr>
@@ -19,11 +20,13 @@
                 <td>${participant.name}</td>
                 <td>${participant.email}</td>
                 <td>${participant.eventName}</td>
+                <td>
+                    <form action="/delete/${participant.id}" method="post" style="display:inline;">
+                        <input type="submit" value="Delete" onclick="return confirm('Delete this participant?');">
+                    </form>
+                </td>
             </tr>
         </c:forEach>
     </table>
-    
-    <br>
-    <a href="/register">Back to Registration</a>
 </body>
 </html>
