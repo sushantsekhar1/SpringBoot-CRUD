@@ -1,3 +1,9 @@
 CREATE DATABASE eventdb;
 
 USE eventdb;
+
+
+    participants.forEach(p -> 
+            System.out.printf("ID: %d | Name: %s | Email: %s | Event: %s%n",
+                p.getId(), p.getName(), p.getEmail(), p.getEventName())
+        );
