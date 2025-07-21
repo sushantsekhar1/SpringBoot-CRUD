@@ -3,7 +3,13 @@ CREATE DATABASE eventdb;
 USE eventdb;
 
 
-    participants.forEach(p -> 
+    @GetMapping("/participants")
+    public String viewParticipants(Model model) {
+        List<EventRegistration> participants = eventRepo.findAll();
+        participants.forEach(p -> 
             System.out.printf("ID: %d | Name: %s | Email: %s | Event: %s%n",
                 p.getId(), p.getName(), p.getEmail(), p.getEventName())
         );
+        model.addAttribute("participants", participants);
+        return "viewParticipants";
+    }
